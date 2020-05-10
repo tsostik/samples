@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve fsbr site
+After=network.target
+
+[Service]
+User=nobody
+Group=www-data
+WorkingDirectory=/var/www/db.bridgesport.ru
+Environment="PATH="/var/www/db.bridgesport.ru/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/var/www/db.bridgesport.ru/bin/gunicorn --config /var/www/db.bridgesport.ru/gunicorn.conf wsgi:app
+
+[Install]
+WantedBy=multi-user.target
